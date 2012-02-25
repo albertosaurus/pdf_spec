@@ -43,7 +43,7 @@ Or include it in certain tests:
       it "should match..."; end
     end
 
-Matchers contains the `have_same_pdf_appearance` expectation which will render
+Matchers contains the `have_same_pdf_appearance_as` expectation which will render
 out PDF files to pixel buffers in memory and then compare them pixel by pixel.
 
 
