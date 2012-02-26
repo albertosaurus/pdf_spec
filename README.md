@@ -21,9 +21,16 @@ libraries and thus this gem does as well.
 
 ## Debian (Ubuntu)
 
-    apt-get install poppler
+    The following was tested on Ubuntu 11.10
 
-## Gentoo
+    sudo apt-get install libglib2.0-dev
+    sudo apt-get install libatk1.0-dev
+    sudo apt-get install libcairo2-dev
+    sudo apt-get install libgdk-pixbuf2.0-dev
+    sudo apt-get install libgtk2.0-dev
+    sudo apt-get install libpoppler-glib-dev
+
+## (TODO) Gentoo
 
     emerge poppler
 
