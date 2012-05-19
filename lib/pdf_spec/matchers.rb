@@ -14,6 +14,10 @@ module PdfSpec # :nodoc:
       def matches?(pdf_data)
         target_pages = parse_pdf_pages(pdf_data)
 
+        # If the two pdfs have a different number of pages, there's no point
+        # in further comparisons.
+        return false unless target_pages.size == @expected_pages.size
+
         [].tap do |results|
           @expected_pages.each_with_index do |expected_page, i|
             results << (expected_page.pixels.to_s == target_pages[i].pixels.to_s)

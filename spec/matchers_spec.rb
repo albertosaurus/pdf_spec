@@ -20,6 +20,14 @@ module PdfSpec
           matcher = IdenticalPdfs.new(first_pdf)
           matcher.matches?(second_pdf).should be_false
         end
+
+        it "should be false for pdfs with a different number of pages" do
+          first_pdf = File.read("#{FIXTURES}/one_page.pdf")
+          second_pdf = File.read("#{FIXTURES}/two_pages.pdf")
+
+          matcher = IdenticalPdfs.new(first_pdf)
+          matcher.matches?(second_pdf).should be_false
+        end
       end
     end
   end
