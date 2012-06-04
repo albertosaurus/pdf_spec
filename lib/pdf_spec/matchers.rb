@@ -12,25 +12,25 @@ module PdfSpec # :nodoc:
       #
       # @param [String] pdf_data PDF content as a Ruby string
       def matches?(pdf_data)
-        target_pages = parse_pdf_pages(pdf_data)
+        @target_pages = parse_pdf_pages(pdf_data)
 
         # If the two pdfs have a different number of pages, there's no point
         # in further comparisons.
-        return false unless target_pages.size == @expected_pages.size
+        return false unless @target_pages.size == @expected_pages.size
 
         [].tap do |results|
           @expected_pages.each_with_index do |expected_page, i|
-            results << (expected_page.pixels.to_s == target_pages[i].pixels.to_s)
+            results << (expected_page.pixels.to_s == @target_pages[i].pixels.to_s)
           end
         end.all?
       end
 
       def failure_message # :nodoc:
-        "expected #{@target.inspect} to look the same as #{@expected.inspect}"
+        "expected #{@target_pages.inspect} to look the same as #{@expected_pages.inspect}"
       end
 
       def negative_failure_message # :nodoc:
-        "expected #{@target.inspect} not to look the same as #{@expected.inspect}"
+        "expected #{@target_pages.inspect} not to look the same as #{@expected_pages.inspect}"
       end
 
       # Wraps a string in a tempfile long enough to be converted to an array of
