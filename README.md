@@ -19,6 +19,11 @@ libraries and thus this gem does as well.
     brew install atk
     brew install poppler
 
+## MacPorts
+    sudo port install gtk2 +universal +x11
+    sudo port install gdk-pixbuf2 +universal
+    sudo port install poppler +universal
+
 ## Debian (Ubuntu)
 
 The following was tested on Ubuntu 11.10 and 12.04.
