@@ -20,6 +20,7 @@ libraries and thus this gem does as well.
     brew install poppler
 
 ## MacPorts
+    sudo port install cairo +x11 # note, no +universal.  This caused segfault for me on 10.6.8 --mike 20120725
     sudo port install gtk2 +universal +x11
     sudo port install gdk-pixbuf2 +universal
     sudo port install poppler +universal
