@@ -57,27 +57,25 @@ module PdfSpec # :nodoc:
       end
       private :wrap_in_tempfile
 
-      # Renders a Poppler Document to set of Pixbuf objects (for each page) via
+      # Renders a PDF with RMagick to set of Pixbuf objects (for each page) via
       # Cairo. This is a simplified copy of an example in the samples directory in
       # the poppler gem.
       def pdf_to_buffers(path)
-        doc = Poppler::Document.new(path)
-        doc.map do |page|
+        buffers = []
+        pdf     = Magick::ImageList.new(path)
+
+        pdf.each do |page|
           begin
-            temp = Tempfile.new("pdf_page")
-            surface = Cairo::ImageSurface.new(Cairo::FORMAT_ARGB32, page.size[0], page.size[1])
-
-            cr = Cairo::Context.new(surface)
-            cr.render_poppler_page(page)
-            cr.target.write_to_png(temp.path)
-            cr.target.finish
-
-            Gdk::Pixbuf.new(temp.path)
+            temp = Tempfile.new(["pdf_page", ".png"])
+            page.write(temp.path)
+            buffers << Gdk::Pixbuf.new(temp.path)
           ensure
             temp.close
             temp.unlink
           end
         end
+
+        buffers
       end
       private :pdf_to_buffers
     end

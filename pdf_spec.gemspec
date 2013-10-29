@@ -22,5 +22,8 @@ Gem::Specification.new do |s|
   # specify any dependencies here; for example:
   s.add_development_dependency "rspec"
   s.add_development_dependency "rake"
-  s.add_runtime_dependency "poppler"
+
+  s.add_runtime_dependency "poppler", "~> 2.0"
+  s.add_runtime_dependency "gdk_pixbuf2" , "~> 2.0"
+  s.add_runtime_dependency "rmagick", "~> 2.13.0"
 end
