@@ -12,23 +12,21 @@ appropriate system packets.
 
 ## Homebrew
 
-    brew install gdk-pixbuf
     brew install imagemagick
     brew install ghostscript
 
 ## MacPorts
-    sudo port install gdk-pixbuf2 +universal
     sudo port install ImageMagick
 
 ## Debian (Ubuntu)
 
 The following was tested on Ubuntu 11.10 and 12.04.
 
-    sudo apt-get install libgdk-pixbuf2.0-dev libmagickwand-dev
+    sudo apt-get install libmagickwand-dev
 
 ## (TODO) Gentoo
 
-    # Install pixbuf2.0 and libmagickwand
+    # Install libmagickwand
 
 # Use
 
