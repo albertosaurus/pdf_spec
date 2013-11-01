@@ -5,24 +5,15 @@ module PdfSpec # :nodoc:
     # @param [String] pdf_data PDF content as a Ruby string
     class IdenticalPdfs
       def initialize(pdf_data)
-        @expected_pages = parse_pdf_pages(pdf_data)
+        @expected_pages = pdf_to_pixel_pages(pdf_data)
       end
 
       # Compares given PDF data against
       #
       # @param [String] pdf_data PDF content as a Ruby string
       def matches?(pdf_data)
-        @target_pages = parse_pdf_pages(pdf_data)
-
-        # If the two pdfs have a different number of pages, there's no point
-        # in further comparisons.
-        return false unless @target_pages.size == @expected_pages.size
-
-        [].tap do |results|
-          @expected_pages.each_with_index do |expected_page, i|
-            results << (expected_page.pixels.to_s == @target_pages[i].pixels.to_s)
-          end
-        end.all?
+        @target_pages = pdf_to_pixel_pages(pdf_data)
+        @target_pages == @expected_pages
       end
 
       def failure_message # :nodoc:
@@ -33,40 +24,18 @@ module PdfSpec # :nodoc:
         "expected #{@target_pages.inspect} not to look the same as #{@expected_pages.inspect}"
       end
 
-      # Wraps a string in a tempfile long enough to be converted to an array of
-      # Pixbuf objects representing the PDF pages
-      def parse_pdf_pages(pdf_data)
-        temp = Tempfile.new("pdf_data")
-        temp.write pdf_data
-        temp.rewind
-        pdf_to_buffers(temp.path)
-      ensure
-        temp.close
-        temp.unlink
+      # Get array of page pixels. The first level array represents PDF pages,
+      # the second level array - pixels.
+      #
+      # @param [String] binary string that represents pdf
+      #
+      # @return [Array<Array<Integer>>] array of arrays of pixels
+      def pdf_to_pixel_pages(pdf_data)
+        Magick::ImageList.new.
+          from_blob(pdf_data).
+          remap { |page| page.export_pixels }
       end
-      private :parse_pdf_pages
-
-      # Renders a PDF with RMagick to set of Pixbuf objects (for each page) via
-      # Cairo. This is a simplified copy of an example in the samples directory in
-      # the poppler gem.
-      def pdf_to_buffers(path)
-        buffers = []
-        pdf     = Magick::ImageList.new(path)
-
-        pdf.each do |page|
-          begin
-            temp = Tempfile.new(["pdf_page", ".png"])
-            page.write(temp.path)
-            buffers << Gdk::Pixbuf.new(temp.path)
-          ensure
-            temp.close
-            temp.unlink
-          end
-        end
-
-        buffers
-      end
-      private :pdf_to_buffers
+      private :pdf_to_pixel_pages
     end
 
     # Compares the pixel by pixel appearance of two strings of PDF data
