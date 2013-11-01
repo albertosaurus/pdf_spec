@@ -27,7 +27,7 @@ module PdfSpec # :nodoc:
       # Get array of page pixels. The first level array represents PDF pages,
       # the second level array - pixels.
       #
-      # @param [String] binary string that represents pdf
+      # @param [String] pdf_data binary string that represents pdf
       #
       # @return [Array<Array<Integer>>] array of arrays of pixels
       def pdf_to_pixel_pages(pdf_data)
