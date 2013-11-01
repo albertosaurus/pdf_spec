@@ -7,33 +7,27 @@ a PDF that looks identical to a sample PDF file.
 
 # Installation
 
-This library depends on the `poppler` ruby gem which internally relies on
-the poppler library for rendering PDFs. Poppler itself has many dependent
-libraries and thus this gem does as well.
+This library depends on the `pixbuf2` and `rmagick` ruby gems which internally relies on
+appropriate system packets.
 
 ## Homebrew
 
-    brew install gtk+
-    brew install pango
     brew install gdk-pixbuf
-    brew install atk
-    brew install poppler
+    # TODO add rmagick dependecies
 
 ## MacPorts
-    sudo port install cairo +x11 # note, no +universal.  This caused segfault for me on 10.6.8 --mike 20120725
-    sudo port install gtk2 +universal +x11
     sudo port install gdk-pixbuf2 +universal
-    sudo port install poppler +universal
+    # TODO add rmagick dependecies
 
 ## Debian (Ubuntu)
 
 The following was tested on Ubuntu 11.10 and 12.04.
 
-    sudo apt-get install libglib2.0-dev libatk1.0-dev libcairo2-dev libgdk-pixbuf2.0-dev libgtk2.0-dev libpoppler-glib-dev
+    sudo apt-get install libgdk-pixbuf2.0-dev libmagickwand-dev
 
 ## (TODO) Gentoo
 
-    emerge poppler
+    # Install pixbuf2.0 and libmagickwand
 
 # Use
 
