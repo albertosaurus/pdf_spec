@@ -1,5 +1,4 @@
 require 'RMagick'
-require 'gdk_pixbuf2'
 
 require 'tempfile'
 
