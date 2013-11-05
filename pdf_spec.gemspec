@@ -5,8 +5,8 @@ require "pdf_spec/version"
 Gem::Specification.new do |s|
   s.name        = "pdf_spec"
   s.version     = PdfSpec::VERSION
-  s.authors     = ["Zachary Belzer"]
-  s.email       = ["zach@tmxcredit.com"]
+  s.authors     = ["TMX Credit", "Zachary Belzer", "Sergey Potapov"]
+  s.email       = ["rubygems@tmxcredit.com", "zach@tmxcredit.com"]
   s.homepage    = "https://github.com/TMXCredit/pdf_spec"
   s.licenses    = ["LICENSE"]
   s.summary     = %q{RSpec matchers for comparing PDF files}
