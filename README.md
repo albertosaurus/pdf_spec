@@ -7,8 +7,7 @@ a PDF that looks identical to a sample PDF file.
 
 # Installation
 
-This library depends on the `pixbuf2` and `rmagick` ruby gems which internally relies on
-appropriate system packets.
+This library depends on the `rmagick` ruby gem.
 
 ## Homebrew
 
