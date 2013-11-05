@@ -7,7 +7,8 @@ Gem::Specification.new do |s|
   s.version     = PdfSpec::VERSION
   s.authors     = ["Zachary Belzer"]
   s.email       = ["zach@tmxcredit.com"]
-  s.homepage    = ""
+  s.homepage    = "https://github.com/TMXCredit/pdf_spec"
+  s.licenses    = ["LICENSE"]
   s.summary     = %q{RSpec matchers for comparing PDF files}
   s.description = %q{This library includes matchers that use Poppler and Cairo
     to render PDF files as images and compare them by the pixel}
