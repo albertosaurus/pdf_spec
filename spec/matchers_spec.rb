@@ -10,7 +10,7 @@ module PdfSpec
           second_pdf = File.read("#{FIXTURES}/one.pdf")
 
           matcher = IdenticalPdfs.new(first_pdf)
-          matcher.matches?(second_pdf).should be_true
+          matcher.matches?(second_pdf).should eq true
         end
 
         it "should be false for differing pdfs" do
@@ -18,7 +18,7 @@ module PdfSpec
           second_pdf = File.read("#{FIXTURES}/two.pdf")
 
           matcher = IdenticalPdfs.new(first_pdf)
-          matcher.matches?(second_pdf).should be_false
+          matcher.matches?(second_pdf).should eq false
         end
 
         it "should be false for pdfs with a different number of pages" do
@@ -26,7 +26,7 @@ module PdfSpec
           second_pdf = File.read("#{FIXTURES}/two_pages.pdf")
 
           matcher = IdenticalPdfs.new(first_pdf)
-          matcher.matches?(second_pdf).should be_false
+          matcher.matches?(second_pdf).should eq false
         end
       end
     end
