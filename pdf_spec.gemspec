@@ -5,9 +5,9 @@ require "pdf_spec/version"
 Gem::Specification.new do |s|
   s.name        = "pdf_spec"
   s.version     = PdfSpec::VERSION
-  s.authors     = ["TMX Credit", "Zachary Belzer", "Sergey Potapov"]
-  s.email       = ["rubygems@tmxcredit.com", "zbelzer@gmail.com", "blake131313@gmail.com"]
-  s.homepage    = "https://github.com/TMXCredit/pdf_spec"
+  s.authors     = ["TMX Credit", "Zachary Belzer", "Sergey Potapov", "Arthur Shagall"]
+  s.email       = ["rubygems@tmxcredit.com", "zbelzer@gmail.com", "blake131313@gmail.com", "arthur.shagall@gmail.com"]
+  s.homepage    = "https://github.com/albertosaurus/pdf_spec"
   s.licenses    = ["LICENSE"]
   s.summary     = %q{RSpec matchers for comparing PDF files}
   s.description = %q{This library includes matchers that use Poppler and Cairo
@@ -21,7 +21,7 @@ Gem::Specification.new do |s|
   s.require_paths = ["lib"]
 
   # specify any dependencies here; for example:
-  s.add_development_dependency "rspec"
+  s.add_development_dependency "rspec", '~> 3.1'
   s.add_development_dependency "rake"
 
   s.add_runtime_dependency "rmagick", "~> 2.13.0"

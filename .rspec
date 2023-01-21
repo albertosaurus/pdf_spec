@@ -1,2 +1,5 @@
 --color
---format nested
+--profile
+--backtrace
+--order random
+--format doc

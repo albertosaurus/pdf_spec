@@ -19,9 +19,17 @@ This library depends on the `rmagick` ruby gem.
 
 ## Debian (Ubuntu)
 
-The following was tested on Ubuntu 11.10 and 12.04.
+The following was tested on Ubuntu 11.10, 12.04, and 20.04.
 
     sudo apt-get install libmagickwand-dev
+
+On Ubuntu 20.04 and later, you may run into the following error:
+
+    Magick::ImageMagickError:
+       attempt to perform an operation not allowed by the security policy `PDF' @ error/constitute.c/IsCoderAuthorized/408
+
+To resolve this, edit `/etc/ImageMagick-6/policy.xml`. Change `<policy domain="coder" rights="none" pattern="PDF" />` to `<policy domain="coder" rights="read|write" pattern="PDF" />`.
+If that doesn't help, change `<!-- <policy domain="module" rights="none" pattern="{PS,PDF,XPS}" /> -->` to `<policy domain="module" rights="read|write" pattern="{PS,PDF,XPS}" />`.
 
 ## (TODO) Gentoo
 
