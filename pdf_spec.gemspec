@@ -24,5 +24,5 @@ Gem::Specification.new do |s|
   s.add_development_dependency "rspec", '~> 3.1'
   s.add_development_dependency "rake"
 
-  s.add_runtime_dependency "rmagick", "~> 2.13.0"
+  s.add_runtime_dependency "rmagick", "> 2.3", "< 6"
 end
